@@ -8,8 +8,7 @@ import pandas as pd  #this is synthetic, normally you might read from file
 import numpy as np
 import sys
 #
-sys.path.append('../python-mapping')
-from vreckon import vreckon
+from pymap3d.vreckon import vreckon
 
 
 def main(mps, Np, Ts, lon0, lat0, tstart, azim):
