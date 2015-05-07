@@ -20,6 +20,7 @@ install:
    pip -q install coveralls;
   fi
  - conda install --yes --file requirements.txt
+ - pip -q install -r requirements.txt
 
 script:  
   - if [[ -z $pyv ]]; then
