@@ -19,7 +19,8 @@ install:
  - if [[ -z $pyv ]]; then
    pip -q install coveralls;
   fi
- - ./condapip.sh
+ - conda install --yes --file requirements.txt
+ - pip install simplekml
 
 script:  
   - if [[ -z $pyv ]]; then

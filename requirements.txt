@@ -1,3 +1,2 @@
 numpy>=1.6
 pandas>=0.15
-simplekml>=1.2.7
