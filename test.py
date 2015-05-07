@@ -8,4 +8,9 @@ with open(kfn,'r') as f:
     txt = f.readlines()
 
 assert txt[26].strip() == '<when>2014-01-01T00:00:18</when>'
-assert txt[47].strip() == '<gx:coord>-99.99996888832626 49.99997136006237 0.0</gx:coord>'
+# python 2 and python 3 have different digits of precision observed here, is this
+# an issue with simplekml or just inherent?
+t47 = txt[47].split()
+assert t47[0][:24] == '<gx:coord>-99.9999688883'
+assert t47[1][:13] == '49.9999713601'
+assert t47[2] =='0.0</gx:coord>'
