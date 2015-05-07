@@ -12,5 +12,5 @@ assert txt[26].strip() == '<when>2014-01-01T00:00:18</when>'
 # an issue with simplekml or just inherent?
 t47 = txt[47].split()
 assert t47[0][:24] == '<gx:coord>-99.9999688883'
-assert t47[1][:13] == '49.9999713601'
+assert t47[1][:12] == '49.999971360' #rounding difference between py2/3
 assert t47[2] =='0.0</gx:coord>'
