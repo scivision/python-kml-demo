@@ -19,8 +19,7 @@ install:
  - if [[ -z $pyv ]]; then
    pip -q install coveralls;
   fi
- - conda install --yes --file requirements.txt
- - pip -q install -r requirements.txt
+ - ./condapip.sh
 
 script:  
   - if [[ -z $pyv ]]; then
