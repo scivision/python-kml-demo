@@ -1,3 +1,4 @@
+[![Code Climate](https://codeclimate.com/github/scienceopen/python-kml-demo/badges/gpa.svg)](https://codeclimate.com/github/scienceopen/python-kml-demo)
 [![Build Status](https://travis-ci.org/scienceopen/python-kml-demo.svg)](https://travis-ci.org/scienceopen/python-kml-demo)
 [![Coverage Status](https://coveralls.io/repos/scienceopen/python-kml-demo/badge.svg)](https://coveralls.io/r/scienceopen/python-kml-demo)
 
