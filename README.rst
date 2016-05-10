@@ -1,3 +1,5 @@
+.. image:: https://travis-ci.org/scienceopen/python-kml-demo.svg?branch=master
+    :target: https://travis-ci.org/scienceopen/python-kml-demo
 .. image::  https://codeclimate.com/github/scienceopen/python-kml-demo/badges/gpa.svg
    :target: https://codeclimate.com/github/scienceopen/python-kml-demo
 .. image::  https://coveralls.io/repos/scienceopen/python-kml-demo/badge.svg

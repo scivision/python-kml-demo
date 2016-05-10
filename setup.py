@@ -18,8 +18,8 @@ setup(name='python-kml-demo',
 	  long_description=long_description,
 	  author='Michael Hirsch',
 	  url='https://github.com/scienceopen/python-kml-demo',
-	  install_requires=['simplekml'],
-      dependency_links = [],
+	  install_requires=['simplekml','pymap3d'],
+      dependency_links = ['https://github.com/scienceopen/pymap3d/tarball/master#egg=pymap3d',],
       packages=['python-kml-demo'],
 	  )
 
