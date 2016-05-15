@@ -14,6 +14,4 @@ Setup:
 --------
 ::
 
-    git clone https://github.com/scienceopen/python-kml-demo.git
-    conda install --file requirements.txt
-    pip install simplekml
+    python setup.py develop
