@@ -8,7 +8,9 @@
 ==========
 python-kml
 ==========
-Examples of using Python to write KML files. 
+Examples of using Python to *write* KML files.
+
+`Example of *read* KML/KMZ files from Python. <https://github.com/scienceopen/geo2mag/blob/master/geo2mag/io.py>`_
 
 Setup:
 --------
