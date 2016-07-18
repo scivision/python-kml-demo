@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-this example assumes you're using simplekml 1.2.7 or newer
+this example assumes you're using simplekml 1.3 or newer
 """
 from __future__ import division
 from simplekml import Kml
@@ -21,6 +21,8 @@ def demokml(mps, Np, Ts, lon0, lat0, tstart, azim):
 
 def makekml(t, lonLatAlt, lat0, lon0):
 
+    assert isinstance(lonLatAlt,np.ndarray) and lonLatAlt.ndim==2 and lonLatAlt.shape[1]==3
+
     kml = Kml(name='My Kml',open=1)
 #    doc = kml.newdocument(name='My Doc',snippet=Snippet('snippet'))
 #    doc.lookat.gxtimespan.begin = t[0]
@@ -33,7 +35,7 @@ def makekml(t, lonLatAlt, lat0, lon0):
 
     trk = kml.newgxtrack(name='My Track')
     trk.newwhen(t)
-    trk.newgxcoord(lonLatAlt)
+    trk.newgxcoord(lonLatAlt.tolist()) #list of lon,lat,alt, NOT ndarray!
 
     # Styling (from simplekml docs)
 #    trk.stylemap.normalstyle.iconstyle.icon.href = 'http://earth.google.com/images/kml-icons/track-directional/track-0.png'
