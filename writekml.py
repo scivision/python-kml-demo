@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python
 """
 this example assumes you're using simplekml 1.3 or newer
 """
