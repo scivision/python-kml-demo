@@ -57,14 +57,12 @@ def sampledata(Np,mps,Ts, lon0, lat0,tstart, azim):
     tr = pd.date_range(tstart,periods=Np,freq=freq).to_pydatetime()
     t = [t.strftime('%Y-%m-%dT%H:%M:%S%Z') for t in tr]
 
-    rng = mps * np.arange(0,Np*Ts,Ts,dtype=float)
+    rng = mps * np.arange(0,Np*Ts,Ts)
 
-    lonLatAlt = np.zeros((Np,3),dtype=float)
+    lonLatAlt = np.zeros((Np,3))
     lonLatAlt[:,1], lonLatAlt[:,0] = vreckon(lat0, lon0, rng, azim=azim)[:2]
 
-    lonLatAltList = list(map(tuple,lonLatAlt))
-
-    return t, lonLatAltList
+    return t, lonLatAlt
 
 def mph2mps(mph):
     return mph * 0.44704
@@ -78,7 +76,7 @@ if __name__ == '__main__':
     p.add_argument('lat0',help='starting latitude of track',type=float)
     p.add_argument('lon0',help='starting longitude of track',type=float)
     p.add_argument('kph',help='speed of object in km/hour',type=float)
-    p.add_argument('-t','--tstart',help='starting time of track in format %Y-%m-%dT%H:%M:%S',type=str,default='2014-01-01T00:00:00')
+    p.add_argument('-t','--tstart',help='starting time of track in format %Y-%m-%dT%H:%M:%S',default='2014-01-01T00:00:00')
     p.add_argument('-n','--Np',help='number of points in track',type=int,default=25)
     p.add_argument('-T','--Ts',help='sample period [sec]',type=float,default=1)
     p.add_argument('-a','--azimuth',help='heading of track [deg]', type=float,default=145)
@@ -88,5 +86,4 @@ if __name__ == '__main__':
 
     mps = kph2mps(a.kph)
     t,lonLatAlt = demokml(mps, a.Np, a.Ts, a.lon0, a.lat0, a.tstart, a.azimuth)
-    #print(t)
-    #print(lonLatAlt)
+
