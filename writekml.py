@@ -84,8 +84,6 @@ if __name__ == '__main__':
     p.add_argument('-a','--azimuth',help='heading of track [deg]', type=float,default=145)
     a = p.parse_args()
 
-    lon0 = float(sys.argv[2])
-
     mps = kph2mps(a.kph)
     t,lonLatAlt = demokml(mps, a.Np, a.Ts, a.lon0, a.lat0, a.tstart, a.azimuth)
 
