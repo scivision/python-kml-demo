@@ -2,14 +2,13 @@
 """
 this example assumes you're using simplekml 1.3 or newer
 """
-from __future__ import division
 from simplekml import Kml
 import pandas as pd  #this is synthetic, normally you might read from file
 import numpy as np
 import sys
 from tempfile import mkstemp
 #
-from pymap3d.vreckon import vreckon
+from pymap3d.vincenty import vreckon
 
 
 def demokml(mps, Np, Ts, lon0, lat0, tstart, azim):
