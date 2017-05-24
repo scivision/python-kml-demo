@@ -1,8 +1,14 @@
 #!/usr/bin/env python
 from numpy.testing import assert_allclose
-from writekml import demokml,kph2mps
+from kml_demo import demokml,kph2mps
 
-kph=100; Np=25; Ts=1; lon0=-100; lat0=50; tstart='2014-01-01T00:00:00';azim=145
+kph=100
+Np=25
+Ts=1
+lon0=-100
+lat0=50
+tstart='2014-01-01T00:00:00';azim=145
+
 mps = kph2mps(kph)
 t,lonLatAlt,kfn = demokml(mps, Np, Ts, lon0, lat0, tstart, azim)
 #%% spot check

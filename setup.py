@@ -14,7 +14,7 @@ pip.main(['install'] + pipreq)
 from setuptools import setup
 
 setup(name='pythonKMLdemo',
-      packages=['python-kml-demo'],
+      packages=['kml_demo'],
 	  description='Demo of making KML from Python',
 	  author='Michael Hirsch, Ph.D.',
 	  url='https://github.com/scivision/python-kml-demo',
