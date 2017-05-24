@@ -1,7 +1,5 @@
 .. image:: https://travis-ci.org/scivision/python-kml-demo.svg?branch=master
     :target: https://travis-ci.org/scivision/python-kml-demo
-.. image::  https://codeclimate.com/github/scivision/python-kml-demo/badges/gpa.svg
-   :target: https://codeclimate.com/github/scivision/python-kml-demo
 .. image::  https://coveralls.io/repos/scivision/python-kml-demo/badge.svg
    :target: https://coveralls.io/r/scivision/python-kml-demo
 
