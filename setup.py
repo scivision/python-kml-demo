@@ -1,8 +1,17 @@
 #!/usr/bin/env python
-from setuptools import setup
+req = ['nose','numpy','pandas',]
+pipreq=['simplekml','pymap3d']
 
-req = ['nose','numpy','pandas',
-       'simplekml','pymap3d']
+import pip
+try:
+    import conda.cli
+    conda.cli.main('install',*req)
+except Exception as e:
+    pip.main(['install'] + req)
+pip.main(['install'] + pipreq)
+
+# %%
+from setuptools import setup
 
 setup(name='pythonKMLdemo',
       packages=['python-kml-demo'],
@@ -15,10 +24,8 @@ setup(name='pythonKMLdemo',
       'Development Status :: 4 - Beta',
       'License :: OSI Approved :: MIT License',
       'Topic :: Scientific/Engineering :: GIS',
-      'Programming Language :: Python :: 3.4',
       'Programming Language :: Python :: 3.5',
       'Programming Language :: Python :: 3.6',
       ],
-	  install_requires=req,
 	  )
 
