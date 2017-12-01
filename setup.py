@@ -19,7 +19,7 @@ setup(name='pythonKMLdemo',
       'Programming Language :: Python :: 3',
       ],
        install_requires=install_requires,
-       python_requires='>=2.7',
+       python_requires='>=3.6',
        tests_require=tests_require,
        extras_require={'tests':tests_require},
 	  )
