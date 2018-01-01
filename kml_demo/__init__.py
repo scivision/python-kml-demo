@@ -13,15 +13,16 @@ from pymap3d.vincenty import vreckon
 def demokml(mps, Np, Ts, lon0, lat0, tstart, azim):
     t, lonLatAlt = sampledata(Np, mps, Ts, lon0, lat0, tstart, azim)
 
-    kfn=makekml(t, lonLatAlt, lat0, lon0)
+    makekml(t, lonLatAlt, lat0, lon0)
 
-    return t,lonLatAlt,kfn
+    return t,lonLatAlt
+
 
 def makekml(t, lonLatAlt, lat0, lon0):
 
     assert isinstance(lonLatAlt,np.ndarray) and lonLatAlt.ndim==2 and lonLatAlt.shape[1]==3
 
-    kml = Kml(name='My Kml',open=1)
+    kml = Kml(name='My Kml')
 #    doc = kml.newdocument(name='My Doc',snippet=Snippet('snippet'))
 #    doc.lookat.gxtimespan.begin = t[0]
 #    doc.lookat.gxtimespan.end = t[-1]
@@ -46,7 +47,6 @@ def makekml(t, lonLatAlt, lat0, lon0):
     kfn=mkstemp(suffix='.kml')[1]
     print('writing to',kfn)
     kml.save(kfn)
-    return kfn
 
 
 def sampledata(Np,mps,Ts, lon0, lat0,tstart, azim):
@@ -55,7 +55,7 @@ def sampledata(Np,mps,Ts, lon0, lat0,tstart, azim):
     # Ts:
     freq = f'{Ts}S'
     tr = pd.date_range(tstart,periods=Np,freq=freq).to_pydatetime()
-    t = [t.strftime('%Y-%m-%dT%H:%M:%S%Z') for t in tr]
+    t = [t.isoformat(timespec='seconds') for t in tr]
 
     rng = mps * np.arange(0,Np*Ts,Ts)
 
@@ -64,8 +64,10 @@ def sampledata(Np,mps,Ts, lon0, lat0,tstart, azim):
 
     return t, lonLatAlt
 
+
 def mph2mps(mph):
     return mph * 0.44704
+
 
 def kph2mps(kph):
     return kph * 0.277778

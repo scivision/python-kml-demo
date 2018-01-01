@@ -14,4 +14,4 @@ Setup:
 --------
 ::
 
-    python setup.py develop
+    python -m pip install -e .
