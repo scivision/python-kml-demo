@@ -3,22 +3,11 @@
 this example assumes you're using simplekml 1.3 or newer
 """
 from simplekml import Kml
-import pandas as pd  #this is for testing only, normally you might read from file
 import numpy as np
 from tempfile import mkstemp
-#
-from pymap3d.vincenty import vreckon
 
 
-def demokml(mps, Np, Ts, lon0, lat0, tstart, azim):
-    t, lonLatAlt = sampledata(Np, mps, Ts, lon0, lat0, tstart, azim)
-
-    makekml(t, lonLatAlt, lat0, lon0)
-
-    return t,lonLatAlt
-
-
-def makekml(t, lonLatAlt, lat0, lon0):
+def makekml(t, lonLatAlt, lat0, lon0, ofn=None):
 
     assert isinstance(lonLatAlt,np.ndarray) and lonLatAlt.ndim==2 and lonLatAlt.shape[1]==3
 
@@ -44,25 +33,10 @@ def makekml(t, lonLatAlt, lat0, lon0):
 #    trk.stylemap.highlightstyle.iconstyle.scale = 1.2
 #    trk.stylemap.highlightstyle.linestyle.color = '99ffac59'
 #    trk.stylemap.highlightstyle.linestyle.width = 8
-    kfn=mkstemp(suffix='.kml')[1]
-    print('writing to',kfn)
-    kml.save(kfn)
-
-
-def sampledata(Np,mps,Ts, lon0, lat0,tstart, azim):
-    # mps: speed meters/sec
-    # Np: number of points
-    # Ts:
-    freq = f'{Ts}S'
-    tr = pd.date_range(tstart,periods=Np,freq=freq).to_pydatetime()
-    t = [t.isoformat(timespec='seconds') for t in tr]
-
-    rng = mps * np.arange(0,Np*Ts,Ts)
-
-    lonLatAlt = np.zeros((Np,3))
-    lonLatAlt[:,1], lonLatAlt[:,0] = vreckon(lat0, lon0, rng, azim=azim)[:2]
-
-    return t, lonLatAlt
+    if not ofn:
+        ofn = mkstemp(suffix='.kml')[1]
+    print('writing to', ofn)
+    kml.save(str(ofn))
 
 
 def mph2mps(mph):

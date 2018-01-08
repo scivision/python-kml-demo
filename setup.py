@@ -1,7 +1,6 @@
 #!/usr/bin/env python
-install_requires = ['numpy','pandas','simplekml',
-        'pymap3d']
-tests_require=['nose','coveralls']
+install_requires = ['numpy','simplekml',]
+tests_require=['nose','coveralls','fastkml']
 # %%
 from setuptools import setup,find_packages
 
@@ -21,6 +20,7 @@ setup(name='pythonKMLdemo',
        install_requires=install_requires,
        python_requires='>=3.6',
        tests_require=tests_require,
-       extras_require={'tests':tests_require},
+       extras_require={'tests':tests_require,
+                       'data':['pymap3d','pandas']},
 	  )
 

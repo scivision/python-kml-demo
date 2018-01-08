@@ -1,5 +1,14 @@
 #!/usr/bin/env python
-from kml_demo import kph2mps,demokml
+from kml_demo import kph2mps, makekml
+from kml_demo.data import sampledata
+
+def demokml(mps, Np, Ts, lon0, lat0, tstart, azim):
+    t, lonLatAlt = sampledata(Np, mps, Ts, lon0, lat0, tstart, azim)
+
+    makekml(t, lonLatAlt, lat0, lon0)
+
+    return t,lonLatAlt
+    
 
 if __name__ == '__main__':
     from argparse import ArgumentParser
